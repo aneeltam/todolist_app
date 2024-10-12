@@ -345,7 +345,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 // Predefined categories for calculating the progress
-const predefinedCategories = ["work", "personal", "shopping", "health"];
+const predefinedCategories = ["work", "personal", "shopping", "health", "other"];
 
 // Initialize an object to track completed items by category
 const categories = {};
@@ -356,11 +356,17 @@ predefinedCategories.forEach(category => {
 // Calculate progress based on the todos
 todos.forEach(todo => {
     todo.items.forEach(item => {
-        const category = todo.category || "other"; // Default to "other" if no category
+        const category = todo.category ? todo.category.toLowerCase() : "other";
         if (categories[category]) {
             categories[category].total++;
             if (item.completed) {
                 categories[category].completed++;
+            }
+        } else {
+            // If the category is not predefined, count it as "other"
+            categories["other"].total++;
+            if (item.completed) {
+                categories["other"].completed++;
             }
         }
     });
@@ -369,9 +375,10 @@ todos.forEach(todo => {
 // Function to display the progress of tasks
 function displayProgress() {
     const progressContainer = document.getElementById("progress-container");
-    if (!progressContainer) return; // Check if the progress container exists
-
-    progressContainer.innerHTML = ""; // Clear any previous progress
+    // Check if the progress container exists
+    if (!progressContainer) return;
+    // Clear any previous progress
+    progressContainer.innerHTML = "";
 
     // Create progress bars for each category
     for (const category in categories) {

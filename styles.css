@@ -483,7 +483,7 @@ li {
 /* Style for the progress container */
 #progress-container {
     margin: 20px auto;
-    padding: 10px;
+    padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #f9f9f9;
@@ -497,12 +497,13 @@ li {
     text-transform: capitalize;
 }
 
-/* Style for the overall progress bar */
+/* Progress bar styles */
 .progress-bar {
     width: 100%;
     background-color: #e0e0e0;
     border-radius: 5px;
     overflow: hidden;
+    margin-top: 10px;
 }
 
 /* Style for the filled portion of the progress bar */
@@ -513,19 +514,27 @@ li {
     transition: width 0.4s ease;
 }
 
-/* Optional: Style for when progress is 100% */
+/* Style for when progress is 100% */
 .progress-bar .progress[style*="width: 100%"] {
     background-color: #11b44f;
 }
 
+/* Category Titles */
+#progress-container div:first-child {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+/* Centered progress title */
 #progress {
     text-align: center;
     margin-bottom: 20px;
     font-size: 24px;
-    color: #333;
+    color: #080808;
 }
 
-/* Centering styles for the empty list message and GIF */
+/* Centering styles for the empty list message */
 .empty-container {
     display: flex;
     flex-direction: column;
