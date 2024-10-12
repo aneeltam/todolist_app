@@ -472,26 +472,48 @@ li {
     display: inline-block;
 }
 
-/* Smaller button for adding item */
+/* Button for adding item */
 .add-item-button {
     padding: 5px 10px;
     font-size: 14px;
     min-width: 100px;
     flex-shrink: 0;
 }
+
+/* Progress container styles */
 .progress-container {
-    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     max-width: 800px;
     margin: 0 auto;
+    padding: 20px;
 }
 
+/* Individual progress item styles */
 .progress-item {
-    margin: 10px 0;
-    padding: 15px;
-    border: 1px solid #ccc;
+    background-color: white;
+    border: 1px solid #ddd;
     border-radius: 5px;
-    background-color: #e5f1fa;
-    transition: background-color 0.3s ease;
+    padding: 15px;
+    margin: 10px 0;
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.progress-item:hover {
+    transform: scale(1.02);
+}
+
+.progress-item h3 {
+    margin: 0;
+    color: #007bff;
+}
+
+.progress-item p {
+    margin: 5px 0 0;
+    color: #555;
 }
 
 #progress {

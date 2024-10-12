@@ -344,68 +344,56 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Function to calculate and display task progress by category
-    function displayProgress() {
+// Function to calculate and display task progress
+function displayProgress() {
+    // Get completed tasks history from local storage
+    const completedTasksHistory = JSON.parse(localStorage.getItem("completedTasksHistory")) || {
+        work: 0,
+        personal: 0,
+        shopping: 0,
+        health: 0
+    };
 
-        // Get completed tasks history from local storage
-        let completedTasksHistory = JSON.parse(localStorage.getItem("completedTasksHistory")) || {
-            work: 0,
-            personal: 0,
-            shopping: 0,
-            health: 0
-        };
+    // Initialize totals and completed counts
+    const categoryCounts = {
+        work: { total: 0, completed: 0 },
+        personal: { total: 0, completed: 0 },
+        shopping: { total: 0, completed: 0 },
+        health: { total: 0, completed: 0 },
+    };
 
-        // Start category counts for each category
-        const categoryCounts = {
-            work: { total: 0, completed: 0 },
-            personal: { total: 0, completed: 0 },
-            shopping: { total: 0, completed: 0 },
-            health: { total: 0, completed: 0 },
-        };
-
-        // Count total tasks per category and completed items
-        todos.forEach(todo => {
-            const category = todo.category;
-
-            // Make sure the category exists in the categoryCounts
-            if (categoryCounts[category]) {
-
-                // Increase the count by one
-                categoryCounts[category].total += 1;
-
-                // Increase the count for completed tasks, if all items in the todo are completed
-                if (todo.items.length > 0 && todo.items.every(item => item.completed)) {
-                    categoryCounts[category].completed += 1;
-                }
+    // Count total tasks per category and completed items
+    todos.forEach(todo => {
+        const category = todo.category;
+        if (categoryCounts[category]) {
+            categoryCounts[category].total += 1;
+            if (todo.items.length > 0 && todo.items.every(item => item.completed)) {
+                categoryCounts[category].completed += 1;
             }
-        });
+        }
+    });
 
-        // Update completedTasksHistory for categories with increased completed counts
+    // Display progress in progress.html page
+    const categoryProgress = document.getElementById("progress-container");
+    if (categoryProgress) {
+        categoryProgress.innerHTML = "";
+
+        // Create and add progress display for each category
         for (const category in categoryCounts) {
-            completedTasksHistory[category] = Math.max(completedTasksHistory[category], categoryCounts[category].completed);
-        }
+            const total = categoryCounts[category].total;
+            const completed = categoryCounts[category].completed;
 
-        // Save the updated completed tasks history back to local storage
-        localStorage.setItem("completedTasksHistory", JSON.stringify(completedTasksHistory));
-
-        // Display the progress in progress.html page
-        const categoryProgress = document.getElementById("progress-container");
-        if (categoryProgress) {
-            categoryProgress.innerHTML = "";
-
-            // Create and add progress display for each category
-            for (const category in categoryCounts) {
-                const progressDiv = document.createElement("div");
-                progressDiv.className = "progress-item";
-                progressDiv.innerHTML = `<h3>${category.charAt(0).toUpperCase() + category.slice(1)}:</h3>
-                                         <p>Total: ${categoryCounts[category].total}, Completed: ${completedTasksHistory[category]}</p>`;
-                categoryProgress.appendChild(progressDiv);
-            }
+            const progressDiv = document.createElement("div");
+            progressDiv.className = "progress-item";
+            progressDiv.innerHTML = `<h3>${category.charAt(0).toUpperCase() + category.slice(1)}:</h3>
+                                     <p>Total: ${total}, Completed: ${completed}</p>`;
+            categoryProgress.appendChild(progressDiv);
         }
     }
+}
 
-    // Check if the current page is the progress page
-    if (window.location.pathname.endsWith("progress.html")) {
-        displayProgress();
-    }
+// Check if the current page is the progress page
+if (window.location.pathname.endsWith("progress.html")) {
+    displayProgress();
+}
 });
