@@ -1,0 +1,522 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #aeddddfd;
+}
+
+/* Top header bar */
+header {
+    background: #4a8ea7;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+/* Header Content */
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+/* Page Name */
+.page-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-right: auto;
+}
+
+/* Top Navigation Links */
+.top-nav {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    gap: 30px;
+}
+
+.top-nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #4a8ea7;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.top-nav a:hover {
+    background-color: #717475;
+}
+
+/* New List Button */
+.new-list-button {
+    background-color: #1d6d8a;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+.new-list-button:hover {
+    background-color: #717475;
+}
+
+/* Main Container */
+.container {
+    margin-left: 0;
+    padding: 20px;
+}
+
+/* Main Container */
+.container {
+    margin-left: 0;
+    padding: 20px;
+}
+
+/* Wide Box */
+.wide-box {
+    background: url('https://www.jvmlending.com/wp-content/uploads/2018/06/busy-street-1030x686.jpg') no-repeat center center;
+    background-size: cover;
+    background-position: top center;
+    padding: 30px;
+    border-radius: 5px;
+    margin-bottom: 2%;
+    height: 300px;
+    margin-left: 1%;
+    margin-right: 1%;
+    overflow: hidden; /* Ensures that overflow is hidden */
+    position: relative;
+}
+
+/* Overlay effect */
+.wide-box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(243, 238, 238, 0.568);
+    z-index: 1;
+}
+
+.wide-box-h1 {
+    margin-top: 0;
+    color: rgb(44, 47, 48);
+    font-size: 3.4em;
+    padding: 5px 10px;
+    margin-bottom: 1%;
+    position: relative;
+    z-index: 2;
+}
+
+.wide-box-p {
+    color: rgb(44, 47, 48);
+    font-size: 1.3em;
+    font-weight: 700;
+    margin-top: 1%;
+    padding: 5px 10px;
+    position: relative;
+    z-index: 2;
+}
+
+.small-boxes {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3%;
+}
+
+.small-box {
+    background: white;
+    border-radius: 5px;
+    border: 0.5px solid #727272;
+    margin: 0 7%;
+    width: 18vw;
+    height: 18vw;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    text-decoration: none;
+    position: relative;
+}
+
+/* Media query for narrow views */
+@media (max-width: 600px) {
+    .small-boxes {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .small-box {
+        width: 90%;
+        height: auto;
+        margin: 10px 0;
+    }
+}
+
+.small-box-text {
+    display: block;
+    color: black;
+    font-weight: bold;
+    margin-top: 5px;
+    font-size: 1.2em;
+}
+
+.small-box:hover img {
+    opacity: 0.7;
+}
+
+/* Error Message */
+.error {
+    color: red;
+    font-size: 12px;
+}
+
+.task-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Todo container */
+#todo-container {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+/* Container holding the post-it style TODOs */
+.todo-container {
+    margin-left: 220px;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Post-it note styling TODO */
+.todo-box {
+    background: #e8f381fd;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    display: inline-block;
+    width: 300px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+    flex-direction: column;
+}
+
+/* Hover effect for todo boxes */
+.todo-box:hover {
+    transform: scale(1.02);
+}
+
+/* Image inside the box */
+.small-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+}
+
+/* Styling for the text in the boxes */
+.small-box span {
+    color: #333;
+    font-size: 16px;
+    text-align: center;
+}
+
+/* Add Container Styles for add.html */
+.add-container-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+/* Inner Add Container */
+.add-container {
+    background-color: white;
+    padding: 20px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Page Title for add.html */
+.add-page-title {
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Form */
+#add-todo-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Category icon */
+.category-icon {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+/* Buttons (edit and delete) container */
+.button-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.button-container button {
+    margin-left: 5px;
+    background-color: #6f746f;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.button-container button.delete-btn {
+    background-color: #f44336;
+}
+
+.button-container button:hover {
+    opacity: 0.8;
+}
+
+/* Alert message styling */
+.confirmation-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.confirmation-box {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.confirmation-box p {
+    margin-bottom: 20px;
+}
+
+.confirmation-box button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.confirmation-box button.confirm {
+    background-color: #f44336;
+    color: white;
+}
+
+.confirmation-box button.cancel {
+    background-color: #4CAF50;
+    color: white;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 8px;
+}
+
+/* Buttons (edit and delete) container */
+.button-edit-delete-container {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.button-edit-delete-container button {
+    margin-left: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button-edit-delete-container button.delete-btn {
+    background-color: #f44336;
+}
+
+.button-edit-delete-container button:hover {
+    opacity: 0.8;
+}
+
+.button-edit-delete-container button.delete-btn:hover {
+    background-color: #d32f2f;
+}
+
+/* Edit Container Wrapper */
+.edit-container-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 20px;
+}
+
+/* Inner Edit Container */
+.edit-container {
+    background-color: white;
+    padding: 20px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Page Title */
+.page-title {
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Form */
+#edit-todo-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Input group to hold label, input, and button */
+.input-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 40px;
+}
+
+/* Label for Item */
+.input-group label {
+    margin-right: 10px;
+    white-space: nowrap;
+}
+
+/* Input field */
+.input-group input {
+    flex-grow: 1;
+    min-width: 0;
+}
+
+/* Button for adding item */
+.add-item-button {
+    padding: 5px 10px;
+    font-size: 14px;
+}
+
+/* Button group for cancel and save buttons */
+.button-group {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+/* Adjust button styling */
+#cancel-button,
+#save-button {
+    padding: 5px 10px;
+    font-size: 14px;
+}
+
+/* List styling */
+#item-list {
+    margin-top: 20px;
+}
+
+li {
+    margin-bottom: 15px;
+}
+
+/* Styles for invalid input */
+.invalid {
+    border: 2px solid red;
+}
+
+/* Error message styling */
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-left: 10px;
+    display: inline-block;
+}
+
+/* Smaller button for adding item */
+.add-item-button {
+    padding: 5px 10px;
+    font-size: 14px;
+    min-width: 100px;
+    flex-shrink: 0;
+}
+.progress-container {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.progress-item {
+    margin: 10px 0;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #e5f1fa;
+    transition: background-color 0.3s ease;
+}
+
+#progress {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+/* Centering styles for the empty list message and GIF */
+.empty-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 10%;
+    padding-top: 20px;
+    box-sizing: border-box;
+    width: 100%;
+    position: relative;
+}
+
+/* Center the text */
+.empty-container p {
+    text-align: center;
+    font-size: 1.5em;
+    margin: 0;
+}

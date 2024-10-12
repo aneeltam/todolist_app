@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Link to styles -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Link to favicon -->
+    <link rel="icon" href="https://www.creativefabrica.com/wp-content/uploads/2022/06/24/Emoji-Tick-List-Icon-Graphics-32937083-1-1-580x386.png" type="image/x-icon">
+    <!-- Title -->
+    <title>Edit TODO</title>
+</head>
+<body>
+    <header>
+        <!-- Page name on the left -->
+        <span class="page-name">TODO Edit</span>
+        <!-- Top navigation -->
+        <nav class="top-nav">
+            <a href="index.html">Home</a>
+            <a href="todos.html">TODOs</a>
+            <a href="progress.html">Progress</a>
+        </nav>
+        <!-- New list button -->
+        <button class="new-list-button" onclick="window.location.href='add.html'">Make a new list +</button>
+    </header>
+    <!-- Header -->
+    <h2 class="page-title">Edit your TODO list</h2>
+
+    <!-- Edit form -->
+    <div class="edit-container-wrapper">
+        <div class="edit-container">
+            <form id="edit-todo-form">
+                <div class="input-group">
+                    <label for="item-title">Item:</label>
+                    <input type="text" id="item-title" required>
+                    <span class="error-message" id="edit-error-message"></span>
+                    <button type="submit" class="add-item-button">Add Item</button>
+                </div>
+            </form>
+
+    <!-- Checkbox to Hide/Show Item List -->
+    <div>
+        <input type="checkbox" id="hide-items-checkbox">
+        <label for="hide-items-checkbox">Hide list items</label>
+    </div>
+            <!-- Cancel and save buttons -->
+            <ul id="item-list"></ul>
+            <div class="button-group">
+                <button id="save-button">Save</button>
+                <button type="button" id="cancel-button" onclick="window.location.href='todos.html'">Cancel</button>
+
+            </div>
+        </div>
+    </div>
+    <!-- Link to script -->
+    <script src="script.js"></script>
+</body>
+</html>

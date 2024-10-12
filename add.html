@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Link to styles -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Link to favicon -->
+    <link rel="icon" href="https://www.creativefabrica.com/wp-content/uploads/2022/06/24/Emoji-Tick-List-Icon-Graphics-32937083-1-1-580x386.png" type="image/x-icon">
+    <!-- Title -->
+    <title>Add TODO</title>
+</head>
+<body>
+    <header>
+        <!-- Page name on the left -->
+        <span class="page-name">TODO Add</span>
+        <!-- Top navigation -->
+        <nav class="top-nav">
+            <a href="index.html">Home</a>
+            <a href="todos.html">TODOs</a>
+            <a href="progress.html">Progress</a>
+        </nav>
+        <!-- New list button -->
+        <button class="new-list-button" onclick="window.location.href='add.html'">Make a new list +</button>
+    </header>
+    <!-- Header -->
+    <h2 class="page-title">Create a new TODO list</h2>
+
+    <!-- Add form -->
+    <div class="add-container-wrapper">
+        <div class="add-container">
+            <form id="add-todo-form">
+                <div class="input-group">
+                    <label for="todo-title">Title:</label>
+                    <input type="text" id="todo-title" required>
+                    <span class="error-message" id="add-error-message"></span>
+                </div>
+                <!-- Category drop down -->
+                <div class="input-group">
+                    <label for="category">Category:</label>
+                    <select id="category" required>
+                        <option value="" disabled selected>Select a category</option>
+                        <option value="work">Work</option>
+                        <option value="personal">Personal</option>
+                        <option value="shopping">Shopping</option>
+                        <option value="health">Health</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <span class="error-message" id="category-error-message"></span>
+                </div>
+                <!-- Save and cancel buttons -->
+                <div class="button-group">
+                    <button type="submit">Save</button>
+                    <button type="button" onclick="window.history.back();">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Link to script -->
+    <script src="script.js"></script>
+</body>
+</html>
