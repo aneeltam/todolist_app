@@ -344,56 +344,54 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-// Function to calculate and display task progress
-function displayProgress() {
-    // Get completed tasks history from local storage
-    const completedTasksHistory = JSON.parse(localStorage.getItem("completedTasksHistory")) || {
-        work: 0,
-        personal: 0,
-        shopping: 0,
-        health: 0
-    };
+// Predefined categories for calculating the progress
+const predefinedCategories = ["work", "personal", "shopping", "health"];
 
-    // Initialize totals and completed counts
-    const categoryCounts = {
-        work: { total: 0, completed: 0 },
-        personal: { total: 0, completed: 0 },
-        shopping: { total: 0, completed: 0 },
-        health: { total: 0, completed: 0 },
-    };
+// Initialize an object to track completed items by category
+const categories = {};
+predefinedCategories.forEach(category => {
+    categories[category] = { completed: 0, total: 0 };
+});
 
-    // Count total tasks per category and completed items
-    todos.forEach(todo => {
-        const category = todo.category;
-        if (categoryCounts[category]) {
-            categoryCounts[category].total += 1;
-            if (todo.items.length > 0 && todo.items.every(item => item.completed)) {
-                categoryCounts[category].completed += 1;
+// Calculate progress based on the todos
+todos.forEach(todo => {
+    todo.items.forEach(item => {
+        const category = todo.category || "other"; // Default to "other" if no category
+        if (categories[category]) {
+            categories[category].total++;
+            if (item.completed) {
+                categories[category].completed++;
             }
         }
     });
+});
 
-    // Display progress in progress.html page
-    const categoryProgress = document.getElementById("progress-container");
-    if (categoryProgress) {
-        categoryProgress.innerHTML = "";
+// Function to display the progress of tasks
+function displayProgress() {
+    const progressContainer = document.getElementById("progress-container");
+    if (!progressContainer) return; // Check if the progress container exists
 
-        // Create and add progress display for each category
-        for (const category in categoryCounts) {
-            const total = categoryCounts[category].total;
-            const completed = categoryCounts[category].completed;
+    progressContainer.innerHTML = ""; // Clear any previous progress
 
-            const progressDiv = document.createElement("div");
-            progressDiv.className = "progress-item";
-            progressDiv.innerHTML = `<h3>${category.charAt(0).toUpperCase() + category.slice(1)}:</h3>
-                                     <p>Total: ${total}, Completed: ${completed}</p>`;
-            categoryProgress.appendChild(progressDiv);
-        }
+    // Create progress bars for each category
+    for (const category in categories) {
+        const { completed, total } = categories[category];
+        const progressBar = document.createElement("div");
+        const progressPercentage = total > 0 ? Math.round((completed / total) * 100) : 0;
+
+        // Style for the progress bar
+        progressBar.innerHTML = `
+            <div>${category}: ${progressPercentage}% completed</div>
+            <div class="progress-bar">
+                <div class="progress" style="width: ${progressPercentage}%;"></div>
+            </div>
+        `;
+
+        progressContainer.appendChild(progressBar);
     }
 }
 
-// Check if the current page is the progress page
-if (window.location.pathname.endsWith("progress.html")) {
-    displayProgress();
-}
+// Update the todo list display and show progress on page load
+updateTodoList();
+displayProgress();
 });
